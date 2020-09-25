@@ -20,7 +20,7 @@ def thingspeak_post():
     print(data)
 
 def read_data_thingspeak():
-    URL='https://api.thingspeak.com/channels/557500/fields/1.json?api_key='
+    URL='https://api.thingspeak.com/channels/1160321/fields/1.json?api_key='
     KEY='READ KEY MREJ31CF94AK6GX4 '
     HEADER='&results=2'
     NEW_URL=URL+KEY+HEADER
