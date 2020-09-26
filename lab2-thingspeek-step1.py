@@ -1,14 +1,15 @@
-import httplib
-import urllib
+import http.client
+import urllib.parse
+from random import randint
 import time
 key = "Q5NPX2FJ6JJ8JQI1"  # Put your API Key here
 def thermometer():
     while True:
         #Calculate CPU temperature of Raspberry Pi in Degrees C
-        temp = int(open('/sys/class/thermal/thermal_zone0/temp').read()) / 1e3 # Get Raspberry Pi CPU temp
-        params = urllib.urlencode({'field1': temp, 'key':key }) 
+        temp = randint(0, 100)
+        params = urllib.parse.urlencode({'field1': temp, 'key':key }) 
         headers = {"Content-typZZe": "application/x-www-form-urlencoded","Accept": "text/plain"}
-        conn = httplib.HTTPConnection("api.thingspeak.com:80")
+        conn = http.client.HTTPConnection("api.thingspeak.com:80")
         try:
             conn.request("POST", "/update", params, headers)
             response = conn.getresponse()
